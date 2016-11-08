@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - onboarding@127.0.0.1">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="onboarding">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <table id="3" parent="1" name="configs"/>
+    <table id="4" parent="1" name="positions"/>
+    <table id="5" parent="1" name="practice"/>
+    <table id="6" parent="1" name="profiles"/>
+    <table id="7" parent="1" name="task_categories"/>
+    <table id="8" parent="1" name="task_comments"/>
+    <table id="9" parent="1" name="task_labels"/>
+    <table id="10" parent="1" name="task_templates"/>
+    <table id="11" parent="1" name="tasks"/>
+    <table id="12" parent="1" name="tasks_labels_map"/>
+    <table id="13" parent="1" name="templates_labels_map"/>
+    <table id="14" parent="1" name="users"/>
+    <column id="15" parent="3" name="config">
+      <comment>Name of the config</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(70)|0</data-type>
+    </column>
+    <column id="16" parent="3" name="value">
+      <comment>Value of the config</comment>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <key id="17" parent="3" name="PRIMARY">
+      <columns>config</columns>
+      <primary>1</primary>
+    </key>
+    <column id="18" parent="4" name="id">
+      <comment>Primary Key</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="19" parent="4" name="position">
+      <comment>Position in the company</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <index id="20" parent="4" name="id_UNIQUE">
+      <columns>id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="21" parent="4" name="position_UNIQUE">
+      <columns>position</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="22" parent="4" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="23" parent="4" name="id_UNIQUE">
+      <columns>id</columns>
+      <underlying-index>id_UNIQUE</underlying-index>
+    </key>
+    <key id="24" parent="4" name="position_UNIQUE">
+      <columns>position</columns>
+      <underlying-index>position_UNIQUE</underlying-index>
+    </key>
+    <column id="25" parent="5" name="id">
+      <comment>Primary Key</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="26" parent="5" name="practice">
+      <comment>Practice the developer is studying.</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <index id="27" parent="5" name="practice_UNIQUE">
+      <columns>practice</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="28" parent="5" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="29" parent="5" name="practice_UNIQUE">
+      <columns>practice</columns>
+      <underlying-index>practice_UNIQUE</underlying-index>
+    </key>
+    <column id="30" parent="6" name="id">
+      <comment>Primary Key</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="31" parent="6" name="user_id">
+      <comment>User&apos;s ID</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <column id="32" parent="6" name="start_date">
+      <comment>Epoch Timestamp of day the user starts this profile</comment>
+      <mandatory>1</mandatory>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="33" parent="6" name="end_date">
+      <comment>Epoch timestamp of day the user stops this profile</comment>
+      <data-type>date|0</data-type>
+    </column>
+    <index id="34" parent="6" name="fk_profiles_user_idx">
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="35" parent="6" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="36" parent="6" name="fk_profiles_user">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="37" parent="7" name="id">
+      <comment>Primary Key</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="38" parent="7" name="category">
+      <comment>Name of the task category</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="39" parent="7" name="display_order">
+      <comment>Display order for the items in the category. Lower the number, the sooner it shows.</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(3) unsigned|0</data-type>
+    </column>
+    <key id="40" parent="7" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="41" parent="8" name="id">
+      <comment>Primary Key</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="42" parent="8" name="task_id">
+      <comment>ID of the task for this comment</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <column id="43" parent="8" name="comment">
+      <comment>Comment content</comment>
+      <mandatory>1</mandatory>
+      <data-type>text|0</data-type>
+    </column>
+    <column id="44" parent="8" name="creation_time">
+      <comment>Time the comment was created</comment>
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+      <default-expression>CURRENT_TIMESTAMP</default-expression>
+    </column>
+    <column id="45" parent="8" name="modification_time">
+      <comment>Last time the comment was modified</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="46" parent="8" name="user_id">
+      <comment>User that made the comment. Blame them!</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <index id="47" parent="8" name="fk_task_comments_task_idx">
+      <columns>task_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="48" parent="8" name="fk_task_comments_user_idx">
+      <columns>user_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="49" parent="8" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="50" parent="8" name="fk_task_comments_task">
+      <columns>task_id</columns>
+      <ref-key>~.tasks.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="51" parent="8" name="fk_task_comments_user">
+      <columns>user_id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="52" parent="9" name="id">
+      <comment>Primary Key</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="53" parent="9" name="label">
+      <comment>Label name</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="54" parent="9" name="is_mandatory">
+      <comment>Flag to determine if a task with this field is mandatory before continuing onto the next category. 0 = false, 1 = true</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(1) unsigned|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <key id="55" parent="9" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="56" parent="10" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="57" parent="10" name="task">
+      <mandatory>1</mandatory>
+      <data-type>varchar(155)|0</data-type>
+    </column>
+    <column id="58" parent="10" name="category_id">
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <column id="59" parent="10" name="position_id">
+      <comment>Task filtered to a specific position</comment>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <column id="60" parent="10" name="practice_id">
+      <comment>Task filtered to a specific practice</comment>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <index id="61" parent="10" name="fk_task_templates_1_idx">
+      <columns>position_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="62" parent="10" name="fk_task_templates_1_idx1">
+      <columns>practice_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="63" parent="10" name="fk_task_templates_categories_idx">
+      <columns>category_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="64" parent="10" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="65" parent="10" name="fk_task_templates_categories">
+      <columns>category_id</columns>
+      <ref-key>~.task_categories.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="66" parent="10" name="fk_task_templates_positions">
+      <columns>position_id</columns>
+      <ref-key>~.positions.id_UNIQUE</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="67" parent="10" name="fk_task_templates_practices">
+      <columns>practice_id</columns>
+      <ref-key>~.practice.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="68" parent="11" name="id">
+      <comment>Primary Key</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="69" parent="11" name="profile_id">
+      <comment>ID of the profile for the task</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <column id="70" parent="11" name="task">
+      <comment>Task title</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(155)|0</data-type>
+    </column>
+    <column id="71" parent="11" name="category_id">
+      <comment>ID for the task category</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <column id="72" parent="11" name="task_date">
+      <comment>Date for the task to be completed. Only used if the task has been postponed.</comment>
+      <data-type>date|0</data-type>
+    </column>
+    <column id="73" parent="11" name="completion_date">
+      <comment>Datetime of task completion.</comment>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="74" parent="11" name="fk_tasks_1_idx">
+      <columns>category_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="75" parent="11" name="fk_tasks_profile_idx">
+      <columns>profile_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="76" parent="11" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="77" parent="11" name="fk_tasks_profile">
+      <columns>profile_id</columns>
+      <ref-key>~.profiles.PRIMARY</ref-key>
+      <cascade-update-rule>update</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="78" parent="11" name="fk_tasks_category">
+      <columns>category_id</columns>
+      <ref-key>~.task_categories.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+    <column id="79" parent="12" name="task_id">
+      <comment>ID of the task</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <column id="80" parent="12" name="label_id">
+      <comment>ID of the label record</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <index id="81" parent="12" name="fk_tasks_labels_map_label_idx">
+      <columns>label_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="82" parent="12" name="PRIMARY">
+      <columns>task_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="83" parent="12" name="fk_tasks_labels_map_task">
+      <columns>task_id</columns>
+      <ref-key>~.tasks.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="84" parent="12" name="fk_tasks_labels_map_label">
+      <columns>label_id</columns>
+      <ref-key>~.task_labels.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="85" parent="13" name="template_id">
+      <comment>ID of the task_template record</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <column id="86" parent="13" name="label_id">
+      <comment>ID of the label record</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <index id="87" parent="13" name="fk_templates_labels_map_labels_idx">
+      <columns>label_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="88" parent="13" name="PRIMARY">
+      <columns>template_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="89" parent="13" name="fk_templates_labels_map_templates">
+      <columns>template_id</columns>
+      <ref-key>~.task_templates.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="90" parent="13" name="fk_templates_labels_map_labels">
+      <columns>label_id</columns>
+      <ref-key>~.task_labels.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="91" parent="14" name="id">
+      <comment>Primary Key</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="92" parent="14" name="first_name">
+      <comment>First name of user</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="93" parent="14" name="last_name">
+      <comment>Last name of user</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="94" parent="14" name="email">
+      <comment>Email of user. This is used to see if user has already been created.</comment>
+      <mandatory>1</mandatory>
+      <data-type>varchar(100)|0</data-type>
+    </column>
+    <column id="95" parent="14" name="position_id">
+      <comment>ID of the position of the user in the company.</comment>
+      <mandatory>1</mandatory>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <column id="96" parent="14" name="practice_id">
+      <comment>The user&apos;s practice, if they are a developer.</comment>
+      <data-type>int(10) unsigned|0</data-type>
+    </column>
+    <column id="97" parent="14" name="is_welcomed">
+      <comment>Flag to determine if we have sent the welcome email to the user</comment>
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+      <default-expression>&apos;0&apos;</default-expression>
+    </column>
+    <index id="98" parent="14" name="email_UNIQUE">
+      <columns>email</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="99" parent="14" name="fk_users_position">
+      <columns>position_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="100" parent="14" name="fk_users_practice">
+      <columns>practice_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="101" parent="14" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="102" parent="14" name="email_UNIQUE">
+      <columns>email</columns>
+      <underlying-index>email_UNIQUE</underlying-index>
+    </key>
+    <foreign-key id="103" parent="14" name="users_ibfk_1">
+      <columns>position_id</columns>
+      <ref-key>~.positions.id_UNIQUE</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="104" parent="14" name="users_ibfk_2">
+      <columns>practice_id</columns>
+      <ref-key>~.practice.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+  </database-model>
+</dataSource>
