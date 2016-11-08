@@ -56,7 +56,7 @@ public class NewUserPage extends TestBase {
     }
 
     public List<String> createRandomizedNewUser() {
-
+        /* TODO: Put all user data form elements into the userData array */
         // List userData contains randomly generated first and last names, and email address
         List<String> userData = GenerateUserData.generateData();
         String firstName = userData.get(0);
