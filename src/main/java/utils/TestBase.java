@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
@@ -20,13 +19,11 @@ public class TestBase {
         protected static WebDriverWait wait;
         protected static JavascriptExecutor jsEx;
         protected static Actions action;
-        private static String driverPath;
-        private static String startingUrl;
+        private static String driverPath = "src\\main\\resources\\drivers\\chromedriver.exe";
+        public static String startingUrlProd = "http://onboarding.stgconsulting.com/new-user#/";
+        public static String startingUrlDev = "http://10.117.3.200:8111";
 
-        protected TestBase() {
-            driverPath = "src\\main\\resources\\drivers\\chromedriver.exe";
-            startingUrl = "http://onboarding.stgconsulting.com/new-user#/"; // Talent Rover
-        }
+        public static String startingUrl = startingUrlDev;
 
         @BeforeClass
         public void initialize() {

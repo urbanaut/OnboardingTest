@@ -20,8 +20,7 @@ public class GeneratePractice {
         practices.add("QA");
         practices.add("SCRIPTED");
 
-        int rand = new Random().nextInt(practices.size());
-        System.out.println(practices.get(rand));
+        int rand = new Random().nextInt(practices.size()-1);
         return practices.get(rand);
     }
 

@@ -12,7 +12,6 @@ import java.util.List;
  */
 public class GenerateUserData {
 
-    @Test
     public static List<String> generateData() {
         // Generates a test user with randomly generated first and last names, and email
         Fairy fairy = Fairy.create();

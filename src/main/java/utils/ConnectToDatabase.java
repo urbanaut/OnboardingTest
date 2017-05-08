@@ -1,14 +1,9 @@
 package utils;
 
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
-import com.jcraft.jsch.Session;
-import org.testng.annotations.Test;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
+
 
 /**
  * Created by bill.witt on 11/2/2016.
@@ -70,6 +65,7 @@ public class ConnectToDatabase {
             conn.close();
 
         }catch(SQLException e){
+            System.out.println("Unable to connect to database, check VPN connection.");
             System.out.println("SQLException: " + e.getMessage());
             System.out.println("SQLState: " + e.getSQLState());
             System.out.println("VendorError: " + e.getErrorCode());

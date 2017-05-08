@@ -77,11 +77,6 @@ public class NewUserTests extends TestBase {
     }
 
     @Test
-    public void same_user_cannot_be_added_again() {
-
-    }
-
-    @Test
     public void new_user_saved_to_db() throws Exception {
         NewUserPage newUserPage = new NewUserPage();
         ConnectToDatabase connectToDatabase = new ConnectToDatabase();
@@ -93,4 +88,11 @@ public class NewUserTests extends TestBase {
         Assert.assertTrue(newUserData.equals(dbUserData), "New user data not found in database.");
         System.out.println("New user data matches new user in database.");
     }
+
+    @Test
+    public void same_user_cannot_be_added_again() {
+
+    }
+
+
 }
