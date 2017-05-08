@@ -15,11 +15,11 @@ public class AdminHomePage extends TestBase {
     public static WebElement templatesMenuBtn = driver.findElement(By.linkText("Templates"));
     public static WebElement reportMenuBtn = driver.findElement(By.linkText("Report"));
     public static WebElement addUserBtn = driver.findElement(By.xpath("//a[contains(text(),'Add User')]"));
-    public static WebElement LogoutBtn = driver.findElement(By.xpath("//a[contains(text(),'Logout')]"));
+    public static WebElement logoutBtn = driver.findElement(By.xpath("//a[contains(text(),'Logout')]"));
 
     public static void clickHomeButton() {
         if(homeMenuBtn.isDisplayed())
-        homeMenuBtn.click();
+            homeMenuBtn.click();
         else
             System.out.println("Home button not found");
     }
@@ -60,8 +60,8 @@ public class AdminHomePage extends TestBase {
     }
 
     public static void clickLogoutButton() {
-        if(LogoutBtn.isDisplayed())
-            LogoutBtn.click();
+        if(logoutBtn.isDisplayed())
+            logoutBtn.click();
         else
             System.out.println("Logout button not found");
     }
