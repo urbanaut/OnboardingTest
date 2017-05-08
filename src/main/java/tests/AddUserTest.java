@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.NewUserPage;
+import pages.AddUserPage;
 import utils.*;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by bill.witt on 11/1/2016.
  */
-public class NewUserTests extends TestBase {
+public class AddUserTest extends TestBase {
 
     // Input values
     private String firstName = GenerateUserData.generateData().get(0);
@@ -24,8 +24,8 @@ public class NewUserTests extends TestBase {
 
     @Test
     public void adding_user_with_no_input_failure() {
-        NewUserPage newUserPage = new NewUserPage();
-        newUserPage.clickAddUserButton();
+        AddUserPage addUserPage = new AddUserPage();
+        addUserPage.clickAddUserButton();
         WebElement error = driver.findElement(By.xpath("//input[contains(@class,'empty error')]"));
 
         Assert.assertTrue(error.isDisplayed(),"No page error on null submit.");
@@ -33,8 +33,8 @@ public class NewUserTests extends TestBase {
 
     @Test
     public void adding_user_with_partial_input_failure() {
-        NewUserPage newUserPage = new NewUserPage();
-        List<WebElement> inputFields = newUserPage.randomizeInputFields();
+        AddUserPage addUserPage = new AddUserPage();
+        List<WebElement> inputFields = addUserPage.randomizeInputFields();
         for (int i = 0; i < inputFields.size(); i++) {
             if (inputFields.get(i).getAttribute("id").equals("firstname"))
                 inputFields.get(i).sendKeys();
@@ -45,7 +45,7 @@ public class NewUserTests extends TestBase {
             else if (inputFields.get(i).getAttribute("id").equals("date"))
                 inputFields.get(i).sendKeys(date);
 
-            newUserPage.clickAddUserButton();
+            addUserPage.clickAddUserButton();
             WebElement error = driver.findElement(By.xpath("//input[contains(@class,'empty')]"));
 
             Assert.assertTrue(error.isDisplayed(),"No page error on null submit.");
@@ -54,17 +54,17 @@ public class NewUserTests extends TestBase {
 
     @Test
     public void adding_user_with_all_input_successful() throws Exception {
-        NewUserPage newUserPage = new NewUserPage();
+        AddUserPage addUserPage = new AddUserPage();
 
-        newUserPage.firstNameFieldElem.sendKeys(firstName);
-        newUserPage.lastNameFieldElem.sendKeys(lastName);
-        newUserPage.positionChoiceElem.click();
-        newUserPage.positionOption.click();
-        newUserPage.practiceChoiceElem.click();
-        newUserPage.getPracticeOption(practice).click();
-        newUserPage.emailFieldElem.sendKeys(email);
-        newUserPage.dateFieldElem.sendKeys(date);
-        newUserPage.addUserBtnElem.click();
+        addUserPage.firstNameFieldElem.sendKeys(firstName);
+        addUserPage.lastNameFieldElem.sendKeys(lastName);
+        addUserPage.positionChoiceElem.click();
+        addUserPage.positionOption.click();
+        addUserPage.practiceChoiceElem.click();
+        addUserPage.getPracticeOption(practice).click();
+        addUserPage.emailFieldElem.sendKeys(email);
+        addUserPage.dateFieldElem.sendKeys(date);
+        addUserPage.addUserBtnElem.click();
 
         try {
             waitInSeconds(2);
@@ -78,10 +78,10 @@ public class NewUserTests extends TestBase {
 
     @Test
     public void new_user_saved_to_db() throws Exception {
-        NewUserPage newUserPage = new NewUserPage();
+        AddUserPage addUserPage = new AddUserPage();
         ConnectToDatabase connectToDatabase = new ConnectToDatabase();
 
-        List<String> newUserData = newUserPage.createRandomizedNewUser();
+        List<String> newUserData = addUserPage.createRandomizedNewUser();
         String email = newUserData.get(2);
         List<String> dbUserData = connectToDatabase.verifyDbData(email);
 

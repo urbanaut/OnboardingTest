@@ -8,6 +8,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -29,6 +31,10 @@ public class TestBase {
         public void initialize() {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("chrome.switches","--disable-extensions"); //Removes popup for disabling extensions
+            Map<String, Object> prefs = new HashMap<>();
+            prefs.put("credentials_enable_service", false);
+            prefs.put("profile.password_manager_enabled", false);
+            options.setExperimentalOption("prefs", prefs);
             System.setProperty("webdriver.chrome.driver",driverPath);
             driver = new ChromeDriver(options);
 
@@ -46,8 +52,11 @@ public class TestBase {
             driver.close();
         }
 
-        protected void waitInSeconds(int seconds) throws InterruptedException {
+        public void waitInSeconds(int seconds) throws InterruptedException {
             int milliseconds = seconds * 1000;
             Thread.sleep(milliseconds);
         }
+
+
+
 }

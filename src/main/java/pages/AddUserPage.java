@@ -14,7 +14,7 @@ import java.util.Random;
 /**
  * Created by bill.witt on 11/1/2016.
  */
-public class NewUserPage extends TestBase {
+public class AddUserPage extends TestBase {
 
     // Input values
     private String practice = ".NET";
@@ -26,7 +26,7 @@ public class NewUserPage extends TestBase {
     public WebElement positionOption = driver.findElement(By.xpath("//option[@value='Contractor']"));
     public WebElement practiceChoiceElem = driver.findElement(By.id("inputPractice"));
     public WebElement emailFieldElem = driver.findElement(By.id("inputEmail3"));
-    public WebElement dateFieldElem = driver.findElement(By.id("date"));
+    public WebElement dateFieldElem = driver.findElement(By.xpath("//input[@placeholder='Enter date']"));
     public WebElement addUserBtnElem = driver.findElement(By.id("submitbutton"));
 
     public void clickAddUserButton() {
