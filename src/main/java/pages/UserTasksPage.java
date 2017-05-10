@@ -25,4 +25,56 @@ public class UserTasksPage extends TestBase {
             System.out.println("Logout button not found");
     }
 
+    public static void clickTitleLink() {
+        if(titleLink.isDisplayed())
+            titleLink.click();
+        else
+            System.out.println("'Title' link is not found.");
+    }
+
+    public static void clickDescriptionLink() {
+        if(descriptionLink.isDisplayed())
+            descriptionLink.click();
+        else
+            System.out.println("'Description' link is not found.");
+    }
+
+    public static void clickStartDateLink() {
+        if(startDateLink.isDisplayed())
+            startDateLink.click();
+        else
+            System.out.println("'Start Date' link is not found.");
+    }
+
+    public static void clickDurationLink() {
+        if(durationLink.isDisplayed())
+            durationLink.click();
+        else
+            System.out.println("'Duration' link is not found.");
+    }
+
+    public static void clickRemainingLink() {
+        if(remainingLink.isDisplayed())
+            remainingLink.click();
+        else
+            System.out.println("'Remaining' link is not found.");
+    }
+
+    public static void clickRequiredLink() {
+        if(requiredLink.isDisplayed())
+            requiredLink.click();
+        else
+            System.out.println("'Required' link is not found.");
+    }
+
+    public static void clickCompleteLink() {
+        if(completeLink.isDisplayed())
+            completeLink.click();
+        else
+            System.out.println("'Complete' link is not found.");
+    }
+
+
+
+
 }

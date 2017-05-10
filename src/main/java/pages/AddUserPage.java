@@ -17,9 +17,6 @@ import java.util.Random;
 public class AddUserPage extends TestBase {
 
     // Input values
-    private String practice = ".NET";
-
-
     public WebElement firstNameFieldElem = driver.findElement(By.id("firstname"));
     public WebElement lastNameFieldElem = driver.findElement(By.id("lastname"));
     public WebElement positionChoiceElem = driver.findElement(By.id("inputPosition"));
