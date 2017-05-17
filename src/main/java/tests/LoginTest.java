@@ -1,6 +1,5 @@
 package tests;
 
-import org.hamcrest.Matchers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -15,16 +14,24 @@ import static org.hamcrest.Matchers.*;
  */
 public class LoginTest extends TestBase {
 
-    private static String username = "droach282+test@gmail.com";
-    private static String password = "stgRocks!";
+    public static String adminUsername = "droach282+test@gmail.com";
+    public static String adminPassword = "stgRocks!";
+    public static String contractorUsername = "billtest0515c@example.com";
+    public static String contractorPassword = "stgRocks!";
 
 
     @Test
-    public static void login_to_onboarding() throws InterruptedException {
-        LoginPage.logIn(username, password);
+    public static void log_in_as_admin() throws InterruptedException {
+        LoginPage.logIn(adminUsername, adminPassword);
 
         WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome to the Dev Center')]"));
         assertThat(assertionText.isDisplayed(), is(true));
     }
 
+    public static void log_in_as_contractor() throws InterruptedException {
+        LoginPage.logIn(contractorUsername, contractorPassword);
+
+        WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome to the Dev Center')]"));
+        assertThat(assertionText.isDisplayed(), is(true));
+    }
 }

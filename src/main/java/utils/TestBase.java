@@ -24,6 +24,7 @@ public class TestBase {
         private static String driverPath = "src\\main\\resources\\drivers\\chromedriver.exe";
         public static String startingUrlProd = "http://onboarding.stgconsulting.com/new-user#/";
         public static String startingUrlDev = "http://10.117.3.200:8111";
+        public static String startingUrlDevPub = "http://216.21.162.13:8111";
 
         public static String startingUrl = startingUrlDev;
 

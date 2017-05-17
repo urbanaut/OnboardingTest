@@ -25,6 +25,14 @@ public class UserTasksPage extends TestBase {
             System.out.println("Logout button not found");
     }
 
+    public static void clickHeaderNamed(String headerName) {
+        WebElement headerLink = driver.findElement(By.linkText("" + headerName + ""));
+        if(headerLink.isDisplayed())
+            headerLink.click();
+        else
+            System.out.println("'" + headerName + "' link is not found.");
+    }
+
     public static void clickTitleLink() {
         if(titleLink.isDisplayed())
             titleLink.click();
