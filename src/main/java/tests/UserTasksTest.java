@@ -35,7 +35,7 @@ public class UserTasksTest extends TestBase {
 
             if (sortArrow.isDisplayed()) {
                 assertThat(sortArrow.isDisplayed(), is(true));
-                System.out.println(header + " column sorted successfully.");
+                System.out.println(header + " column sorted successfully, sort arrow is shown.");
             }
         }
     }
@@ -62,7 +62,7 @@ public class UserTasksTest extends TestBase {
 
                         for (int i = 0; i < firstLettersString.size() - 1; i++) {
                             if ((int) firstLettersString.get(i).charAt(0) > (int) firstLettersString.get(i + 1).charAt(0)) {
-                                System.out.println("Rows not sorted in alphabetical order.");
+                                System.out.println("Rows in '" + header + "' column not sorted in alphabetical order.");
                                 ordered = false;
                                 break;
                             }
@@ -85,7 +85,6 @@ public class UserTasksTest extends TestBase {
             }
             if (ordered)
                 System.out.println("All rows in '" + header + "' column are in alphabetical order.");
-
             firstLettersString.clear();
             columnNum = columnNum + 1;
         }
