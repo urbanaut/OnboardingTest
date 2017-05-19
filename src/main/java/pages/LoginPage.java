@@ -9,23 +9,24 @@ import utils.TestBase;
  */
 public class LoginPage extends TestBase {
 
-    private static WebElement usernameFieldElem = driver.findElement(By.id("username"));
-    private static WebElement passwordFieldElem = driver.findElement(By.id("password"));
-    private static WebElement loginBtn = driver.findElement(By.xpath("//button[contains(text(),'Login')]"));
+    public WebElement usernameFieldElem = driver.findElement(By.id("username"));
+    public WebElement passwordFieldElem = driver.findElement(By.id("password"));
+    public WebElement loginBtn = driver.findElement(By.xpath("//button[contains(text(),'Login')]"));
+    public WebElement homeBtn = driver.findElement(By.xpath("//a[@class='navbar-brand']"));
 
-
-    public static void logIn(String username, String password) {
+    public void logIn(String username, String password) {
         try {
             enterUsername(username);
             enterPassword(password);
             clickLoginButton();
+            waitInSeconds(1);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
 
-    private static void enterUsername(String username) {
+    private void enterUsername(String username) {
         try{
             if(usernameFieldElem.isDisplayed())
                 usernameFieldElem.sendKeys(username);
@@ -37,7 +38,7 @@ public class LoginPage extends TestBase {
         }
     }
 
-    private static void enterPassword(String password) {
+    private void enterPassword(String password) {
         try{
             if(passwordFieldElem.isDisplayed())
                 passwordFieldElem.sendKeys(password);
@@ -49,7 +50,7 @@ public class LoginPage extends TestBase {
         }
     }
 
-    private static void clickLoginButton() {
+    private void clickLoginButton() {
         try{
             if(loginBtn.isDisplayed())
                 loginBtn.click();

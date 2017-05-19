@@ -17,49 +17,49 @@ public class AdminHomePage extends TestBase {
     public static WebElement addUserBtn = driver.findElement(By.xpath("//a[contains(text(),'Add User')]"));
     public static WebElement logoutBtn = driver.findElement(By.xpath("//a[contains(text(),'Logout')]"));
 
-    public static void clickHomeButton() {
+    public void clickHomeButton() {
         if(homeMenuBtn.isDisplayed())
             homeMenuBtn.click();
         else
             System.out.println("Home button not found");
     }
 
-    public static void clickTasksButton() {
+    public void clickTasksButton() {
         if(tasksMenuBtn.isDisplayed())
             tasksMenuBtn.click();
         else
             System.out.println("Tasks button not found");
     }
 
-    public static void clickUsersButton() {
+    public void clickUsersButton() {
         if(usersMenuBtn.isDisplayed())
             usersMenuBtn.click();
         else
             System.out.println("Users button not found");
     }
 
-    public static void clickTemplatesButton() {
+    public void clickTemplatesButton() {
         if(templatesMenuBtn.isDisplayed())
             templatesMenuBtn.click();
         else
             System.out.println("Templates button not found");
     }
 
-    public static void clickReportButton() {
+    public void clickReportButton() {
         if(reportMenuBtn.isDisplayed())
             reportMenuBtn.click();
         else
             System.out.println("Report button not found");
     }
 
-    public static void clickAddUserButton() {
+    public void clickAddUserButton() {
         if(addUserBtn.isDisplayed())
             addUserBtn.click();
         else
             System.out.println("Add User button not found");
     }
 
-    public static void clickLogoutButton() {
+    public void clickLogoutButton() {
         if(logoutBtn.isDisplayed())
             logoutBtn.click();
         else

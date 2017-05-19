@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="FunctionalTests" verbose="1">
+
+    <test name="Login">
+        <classes>
+            <class name="tests.LoginTests"/>
+        </classes>
+    </test>
+
+    <test name="UserTasks">
+        <classes>
+            <class name="tests.UserTasksTests"/>
+        </classes>
+    </test>
+
+</suite>

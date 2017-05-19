@@ -11,7 +11,7 @@ public class TaskTemplatesPage extends TestBase {
 
     public static WebElement categoryDropdown = driver.findElement(By.id("selectCategory"));
 
-    public static void selectCategory (String option) {
+    public void selectCategory (String option) {
         
     }
 }

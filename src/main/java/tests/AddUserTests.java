@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by bill.witt on 11/1/2016.
  */
-public class AddUserTest extends TestBase {
+public class AddUserTests extends TestBase {
 
     // Input values
     private String firstName = GenerateUserData.generateData().get(0);

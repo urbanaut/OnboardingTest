@@ -1,6 +1,7 @@
 package tests;
 
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPage;
@@ -16,22 +17,29 @@ import static org.hamcrest.core.Is.is;
 /**
  * Created by bill.witt on 5/10/2017.
  */
-public class UserTasksTest extends TestBase {
+public class UserTasksTests extends TestBase {
 
     private List<String> headers = new ArrayList<>();
 
+    @BeforeClass
+    public void classSetup() {
+        LoginPage login = new LoginPage();
+        login.logIn(LoginTests.contractorUsername, LoginTests.contractorPassword);
+    }
+
     @BeforeMethod
     public void setup() {
-        LoginPage.logIn(LoginTest.contractorUsername, LoginTest.contractorPassword);
-        headers = UserTasksPage.columnHeaders();
+        UserTasksPage tasksPage = new UserTasksPage();
+        headers = tasksPage.columnHeaders();
     }
 
     @Test
     public void verify_presence_of_column_sort_arrow() throws InterruptedException {
+        UserTasksPage tasksPage = new UserTasksPage();
         for (String header : headers) {
-            UserTasksPage.clickHeaderNamed(header);
+            tasksPage.clickHeaderNamed(header);
             waitInSeconds(1);
-            WebElement sortArrow = UserTasksPage.sortArrow(header);
+            WebElement sortArrow = tasksPage.sortArrow(header);
 
             if (sortArrow.isDisplayed()) {
                 assertThat(sortArrow.isDisplayed(), is(true));
@@ -46,13 +54,14 @@ public class UserTasksTest extends TestBase {
         int columnNum = 1;
         ArrayList<String> firstLettersString = new ArrayList<>();
         boolean ordered = true;
+        UserTasksPage tasksPage = new UserTasksPage();
 
         for (String header : headers) {
-            UserTasksPage.clickHeaderNamed(header);
+            tasksPage.clickHeaderNamed(header);
             waitInSeconds(1);
 
-            List<WebElement> rows = UserTasksPage.taskRows();
-            Character firstLetter = UserTasksPage.firstChar(rowNum, columnNum);
+            List<WebElement> rows = tasksPage.taskRows();
+            Character firstLetter = tasksPage.firstChar(rowNum, columnNum);
 
             for (WebElement row : rows) {
                 while (rowNum != rows.size() + 1) {
@@ -68,7 +77,7 @@ public class UserTasksTest extends TestBase {
                             }
                         }
                     } else {
-                        String day = UserTasksPage.day(rowNum, columnNum);
+                        String day = tasksPage.day(rowNum, columnNum);
                         firstLettersString.add(day);
 
                         for (int i = 0; i < firstLettersString.size() - 1; i++) {

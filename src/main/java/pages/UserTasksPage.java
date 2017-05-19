@@ -12,9 +12,9 @@ import java.util.List;
  */
 public class UserTasksPage extends TestBase {
 
-    private static WebElement logoutBtn = driver.findElement(By.xpath("//a[contains(text(),'Logout')]"));
+    private WebElement logoutBtn = driver.findElement(By.xpath("//a[contains(text(),'Logout')]"));
 
-    public static List<String> columnHeaders() {
+    public List<String> columnHeaders() {
         List<String> headers = new ArrayList<>();
         headers.add("Title");
         headers.add("Description");
@@ -26,28 +26,28 @@ public class UserTasksPage extends TestBase {
         return headers;
     }
 
-    public static WebElement sortArrow(String header) {
+    public WebElement sortArrow(String header) {
         return driver.findElement(By.xpath("//th[@class='sort-false']/a[text()='" + header + "']")); //or ("//th[@ng-class=\"vm.selectedCls(vm.tasks,'task')\" and @class='sort-false']");
     }
 
-    public static List<WebElement> taskRows() {
+    public List<WebElement> taskRows() {
         return driver.findElements(By.xpath("//table[@class='table']/tbody/tr"));
     }
 
-    public static String fieldText(int rowNum, int columnNum) {
+    public String fieldText(int rowNum, int columnNum) {
         return driver.findElement(By.xpath("//table[@class='table']/tbody/tr[" + rowNum + "]/td[" + columnNum + "]")).getAttribute("innerHTML");
     }
 
-    public static Character firstChar(int rowNum, int columnNum) {
+    public Character firstChar(int rowNum, int columnNum) {
         return fieldText(rowNum, columnNum).charAt(0);
     }
 
-    public static String day(int rowNum, int columnNum) {
+    public String day(int rowNum, int columnNum) {
         String rowText = fieldText(rowNum, columnNum);
         return rowText.substring(rowText.length() - 2);
     }
 
-    public static void clickHeaderNamed(String headerName) {
+    public void clickHeaderNamed(String headerName) {
         WebElement headerLink = driver.findElement(By.linkText("" + headerName + ""));
         if(headerLink.isDisplayed())
             headerLink.click();
@@ -55,7 +55,7 @@ public class UserTasksPage extends TestBase {
             System.out.println("'" + headerName + "' link is not found.");
     }
 
-    public static void clickLogoutButton() {
+    public void clickLogoutButton() {
         if(logoutBtn.isDisplayed())
             logoutBtn.click();
         else

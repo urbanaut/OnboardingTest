@@ -17,14 +17,14 @@ import java.util.Random;
 public class AddUserPage extends TestBase {
 
     // Input values
-    public WebElement firstNameFieldElem = driver.findElement(By.id("firstname"));
-    public WebElement lastNameFieldElem = driver.findElement(By.id("lastname"));
-    public WebElement positionChoiceElem = driver.findElement(By.id("inputPosition"));
-    public WebElement positionOption = driver.findElement(By.xpath("//option[@value='Contractor']"));
-    public WebElement practiceChoiceElem = driver.findElement(By.id("inputPractice"));
-    public WebElement emailFieldElem = driver.findElement(By.id("inputEmail3"));
-    public WebElement dateFieldElem = driver.findElement(By.xpath("//input[@placeholder='Enter date']"));
-    public WebElement addUserBtnElem = driver.findElement(By.id("submitbutton"));
+    public static WebElement firstNameFieldElem = driver.findElement(By.id("firstname"));
+    public static WebElement lastNameFieldElem = driver.findElement(By.id("lastname"));
+    public static WebElement positionChoiceElem = driver.findElement(By.id("inputPosition"));
+    public static WebElement positionOption = driver.findElement(By.xpath("//option[@value='Contractor']"));
+    public static WebElement practiceChoiceElem = driver.findElement(By.id("inputPractice"));
+    public static WebElement emailFieldElem = driver.findElement(By.id("inputEmail3"));
+    public static WebElement dateFieldElem = driver.findElement(By.xpath("//input[@placeholder='Enter date']"));
+    public static WebElement addUserBtnElem = driver.findElement(By.id("submitbutton"));
 
     public void clickAddUserButton() {
         addUserBtnElem.click();
