@@ -27,7 +27,7 @@ public class UserTasksTest extends TestBase {
     }
 
     @Test
-    public void verify_presence_of_sort_arrow() throws InterruptedException {
+    public void verify_presence_of_column_sort_arrow() throws InterruptedException {
         for (String header : headers) {
             UserTasksPage.clickHeaderNamed(header);
             waitInSeconds(1);
@@ -55,11 +55,10 @@ public class UserTasksTest extends TestBase {
             Character firstLetter = UserTasksPage.firstChar(rowNum, columnNum);
 
             for (WebElement row : rows) {
-                while (rowNum == rows.size() + 1) {
+                while (rowNum != rows.size() + 1) {
                     if (columnNum != 3) {
                         String letter = firstLetter.toString().toLowerCase();
                         firstLettersString.add(letter);
-                        rowNum++;
 
                         for (int i = 0; i < firstLettersString.size() - 1; i++) {
                             if ((int) firstLettersString.get(i).charAt(0) > (int) firstLettersString.get(i + 1).charAt(0)) {
@@ -71,7 +70,6 @@ public class UserTasksTest extends TestBase {
                     } else {
                         String day = UserTasksPage.day(rowNum, columnNum);
                         firstLettersString.add(day);
-                        rowNum++;
 
                         for (int i = 0; i < firstLettersString.size() - 1; i++) {
                             if (Integer.parseInt(firstLettersString.get(i)) > Integer.parseInt(firstLettersString.get(i + 1))) {
@@ -81,9 +79,10 @@ public class UserTasksTest extends TestBase {
                             }
                         }
                     }
+                    rowNum++;
                 }
+                rowNum = 2;
             }
-
             if (ordered)
                 System.out.println("All rows in '" + header + "' column are in alphabetical order.");
 
