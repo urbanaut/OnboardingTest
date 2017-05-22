@@ -26,11 +26,13 @@ public class TestBase {
     protected static WebDriverWait wait;
     protected static JavascriptExecutor jsEx;
     protected static Actions action;
-    public static String driverPath = "src\\main\\resources\\drivers\\chromedriver.exe";
+    public static String driverPathJenkins = "$JENKINS_HOME\\tools\\chromedriver\\chromedrive.exe";
+    public static String driverPathDev = "src\\main\\resources\\drivers\\chromedriver.exe";
     public static String startingUrlProd = "http://onboarding.stgconsulting.com/new-user#/";
     public static String startingUrlDev = "http://10.117.3.200:8111";
     public static String startingUrlDevPub = "http://216.21.162.13:8111";
 
+    public static String driverPath = driverPathJenkins;
     public static String startingUrl = startingUrlDev;
 
     @BeforeSuite
