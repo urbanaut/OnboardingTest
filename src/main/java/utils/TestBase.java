@@ -26,7 +26,7 @@ public class TestBase {
     protected static WebDriverWait wait;
     protected static JavascriptExecutor jsEx;
     protected static Actions action;
-    public static String driverPathJenkins = "/usr/local/share/";
+    public static String driverPathJenkins = "/usr/local/share/chromedriver";
     public static String driverPathDev = "src\\main\\resources\\drivers\\chromedriver.exe";
     public static String startingUrlProd = "http://onboarding.stgconsulting.com/new-user#/";
     public static String startingUrlDev = "http://10.117.3.200:8111";
@@ -38,7 +38,7 @@ public class TestBase {
     @BeforeSuite
     public void initialize() {
         System.setProperty("webdriver.chrome.driver",driverPath);
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(initializeNewDriver());
 
         wait = new WebDriverWait(driver, 20);
         jsEx = (JavascriptExecutor) driver;
@@ -52,6 +52,7 @@ public class TestBase {
 
     public static ChromeOptions initializeNewDriver() {
         ChromeOptions options = new ChromeOptions();
+        options.setBinary(driverPath);
         options.addArguments("chrome.switches","--disable-extensions"); //Removes popup for disabling extensions
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
