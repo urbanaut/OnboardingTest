@@ -38,7 +38,7 @@ public class TestBase {
     @BeforeSuite
     public void initialize() {
         System.setProperty("webdriver.chrome.driver",driverPath);
-        driver = new ChromeDriver(initializeNewDriver());
+        driver = new ChromeDriver();
 
         wait = new WebDriverWait(driver, 20);
         jsEx = (JavascriptExecutor) driver;
