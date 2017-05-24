@@ -33,7 +33,7 @@ public class TestBase {
     @BeforeSuite
     public void initialize() {
         System.setProperty("webdriver.chrome.driver",driverPath);
-        ChromeOptions options = new ChromeOptions();
+        //ChromeOptions options = new ChromeOptions();
         //options.setBinary(driverPath);
         //options.addArguments("--no-sandbox");
         //options.addArguments("chrome.switches","--disable-extensions"); //Removes popup for disabling extensions
@@ -41,8 +41,8 @@ public class TestBase {
 //        prefs.put("credentials_enable_service", false);
 //        prefs.put("profile.password_manager_enabled", false);
 //        options.setExperimentalOption("prefs", prefs);
-        driver = new ChromeDriver(options);
-
+//        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 20);
         jsEx = (JavascriptExecutor) driver;
         action = new Actions(driver);
