@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import utils.TestBase;
 
@@ -9,10 +10,15 @@ import utils.TestBase;
  */
 public class LoginPage extends TestBase {
 
-    public WebElement usernameFieldElem = driver.findElement(By.id("username"));
-    public WebElement passwordFieldElem = driver.findElement(By.id("password"));
-    public WebElement loginBtn = driver.findElement(By.xpath("//button[contains(text(),'Login')]"));
-    public WebElement homeBtn = driver.findElement(By.xpath("//a[@class='navbar-brand']"));
+    protected WebDriver driver;
+    private By usernameFieldElem = By.id("username");
+    private By passwordFieldElem = By.id("password");
+    private By loginBtn = By.xpath("//button[contains(text(),'Login')]");
+    private By homeBtn = By.xpath("//a[@class='navbar-brand']");
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public void logIn(String username, String password) {
         try {
@@ -28,8 +34,9 @@ public class LoginPage extends TestBase {
 
     private void enterUsername(String username) {
         try{
-            if(usernameFieldElem.isDisplayed())
-                usernameFieldElem.sendKeys(username);
+            WebElement usernameField = driver.findElement(usernameFieldElem);
+            if(usernameField.isDisplayed())
+                usernameField.sendKeys(username);
             else
                 System.out.println("Username field not found.");
         } catch (Exception e) {
@@ -40,8 +47,9 @@ public class LoginPage extends TestBase {
 
     private void enterPassword(String password) {
         try{
-            if(passwordFieldElem.isDisplayed())
-                passwordFieldElem.sendKeys(password);
+            WebElement passwordField = driver.findElement(passwordFieldElem);
+            if(passwordField.isDisplayed())
+                passwordField.sendKeys(password);
             else
                 System.out.println("Password field not found.");
         } catch (Exception e) {
@@ -52,8 +60,9 @@ public class LoginPage extends TestBase {
 
     private void clickLoginButton() {
         try{
-            if(loginBtn.isDisplayed())
-                loginBtn.click();
+            WebElement login = driver.findElement(loginBtn);
+            if(login.isDisplayed())
+                login.click();
             else
                 System.out.println("Login button not found.");
         } catch (Exception e) {

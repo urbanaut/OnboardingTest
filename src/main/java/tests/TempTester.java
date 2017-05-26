@@ -22,7 +22,7 @@ public class TempTester extends TestBase {
     }
 
     @Test public void test1() throws InterruptedException {
-        LoginPage login = new LoginPage();
+        LoginPage login = new LoginPage(driver);
         login.logIn("droach282+test@gmail.com","stgRocks!");
         WebElement home = driver.findElement(By.linkText("Home"));
         home.click();

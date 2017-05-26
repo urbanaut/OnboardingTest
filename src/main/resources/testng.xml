@@ -1,17 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="FunctionalTests" verbose="1">
-
-    <test name="Login">
+    <parameter name="appURL" value="http://10.117.3.200:8111"/>
+    <parameter name="browserType" value="firefox"/>
+    <test name="Run Tests">
         <classes>
             <class name="tests.LoginTests"/>
+            <!--<class name="tests.UserTasksTests"/>-->
         </classes>
     </test>
-
-    <test name="UserTasks">
-        <classes>
-            <class name="tests.UserTasksTests"/>
-        </classes>
-    </test>
-
 </suite>

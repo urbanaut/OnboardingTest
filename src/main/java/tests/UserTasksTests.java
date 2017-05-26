@@ -24,7 +24,7 @@ public class UserTasksTests extends TestBase {
 
     @BeforeClass
     public void classSetup() {
-        LoginPage login = new LoginPage();
+        LoginPage login = new LoginPage(driver);
         login.logIn(LoginTests.contractorUsername, LoginTests.contractorPassword);
     }
 

@@ -1,6 +1,7 @@
 package tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 import pages.LandingPage;
@@ -21,16 +22,21 @@ public class LoginTests extends TestBase {
     public static String contractorUsername = "billtest0515c@example.com";
     public static String contractorPassword = "stgRocks!";
 
+    private WebDriver driver;
+
+    @BeforeClass
+    public void setUp() {
+        driver = getDriver();
+    }
+
     @BeforeMethod
     public void setup() {
-        LoginPage login = new LoginPage();
+        LoginPage login = new LoginPage(driver);
         login.logIn(adminUsername, adminPassword);
     }
 
     @Test
     public void log_in_as_admin() throws InterruptedException {
-//        LoginPage login = new LoginPage();
-//        login.logIn(adminUsername, adminPassword);
         WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome to the Dev Center')]"));
         assertThat(assertionText.isDisplayed(), is(true));
         System.out.println("Admin login successful.");
@@ -38,8 +44,6 @@ public class LoginTests extends TestBase {
 
     @Test
     public void log_in_as_contractor() throws InterruptedException {
-//        LoginPage login = new LoginPage();
-//        login.logIn(contractorUsername, contractorPassword);
         WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome to the Dev Center')]"));
         assertThat(assertionText.isDisplayed(), is(true));
         System.out.println("Contractor login successful.");
@@ -49,6 +53,5 @@ public class LoginTests extends TestBase {
     public void logout_of_app() throws InterruptedException {
         LandingPage landing = new LandingPage();
         landing.clickLogoutButton();
-        waitInSeconds(1);
     }
 }
