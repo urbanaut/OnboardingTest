@@ -28,29 +28,28 @@ public class TestBase {
     public static String startingUrlDev = "http://10.117.3.200:8111";
     public static String startingUrlDevPub = "http://216.21.162.13:8111";
 
-    public static String driverPath = driverPathJenkins;
+    public static String driverPath = driverPathDev;
     public static String startingUrl = startingUrlDev;
 
-    @BeforeClass
+    @BeforeSuite
     public void initialize() {
         System.setProperty("webdriver.chrome.driver",driverPath);
-        //ChromeOptions options = new ChromeOptions();
-        //options.setBinary(driverPath);
-        //options.addArguments("--no-sandbox");
-        //options.addArguments("chrome.switches","--disable-extensions"); //Removes popup for disabling extensions
-//        Map<String, Object> prefs = new HashMap<>();
-//        prefs.put("credentials_enable_service", false);
-//        prefs.put("profile.password_manager_enabled", false);
-//        options.setExperimentalOption("prefs", prefs);
-//        driver = new ChromeDriver(options);
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 20);
-        jsEx = (JavascriptExecutor) driver;
-        action = new Actions(driver);
-
+        ChromeOptions options = new ChromeOptions();
+//        options.setBinary(driverPath);
+        options.addArguments("--no-sandbox");
+        options.addArguments("chrome.switches","--disable-extensions"); //Removes popup for disabling extensions
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        options.setExperimentalOption("prefs", prefs);
+        driver = new ChromeDriver(options);
         driver.navigate().to(startingUrl);
 //        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+        wait = new WebDriverWait(driver, 20);
+        jsEx = (JavascriptExecutor) driver;
+        action = new Actions(driver);
     }
 
 
