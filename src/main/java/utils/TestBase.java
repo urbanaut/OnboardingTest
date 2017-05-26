@@ -64,7 +64,7 @@ public class TestBase {
 
     private static WebDriver initFirefoxDriver(String appURL) {
         System.out.println("Launching Firefox browser..");
-        System.setProperty("webdriver.gecko.driver", geckoDriverPathJenkins);
+        //System.setProperty("webdriver.gecko.driver", geckoDriverPathJenkins);
         WebDriver driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 //        driver.manage().window().maximize();
