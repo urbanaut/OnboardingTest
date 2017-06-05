@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
@@ -54,6 +55,7 @@ public class TestBase {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
+//        options.addArguments("--start-maximized");
         options.addArguments("chrome.switches","--disable-extensions"); //Removes popup reminder for disabling extensions
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
@@ -86,7 +88,7 @@ public class TestBase {
         }
     }
 
-    //@AfterClass
+    @AfterClass
     public void tearDown() {
         driver.close();
     }
