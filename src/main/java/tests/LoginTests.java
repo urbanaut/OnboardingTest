@@ -29,14 +29,16 @@ public class LoginTests extends TestBase {
         driver = getDriver();
     }
 
-    @BeforeMethod
-    public void setup() {
-        LoginPage login = new LoginPage(driver);
-        login.logIn(adminUsername, adminPassword);
-    }
+//    @BeforeMethod
+//    public void setup() {
+//        LoginPage login = new LoginPage(driver);
+//        login.logIn(adminUsername, adminPassword);
+//    }
 
     @Test
     public void log_in_as_admin() throws InterruptedException {
+        LoginPage login = new LoginPage(driver);
+        login.logIn(adminUsername, adminPassword);
         WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome to the Dev Center')]"));
         assertThat(assertionText.isDisplayed(), is(true));
         System.out.println("Admin login successful.");
@@ -44,6 +46,8 @@ public class LoginTests extends TestBase {
 
     @Test
     public void log_in_as_contractor() throws InterruptedException {
+        LoginPage login = new LoginPage(driver);
+        login.logIn(adminUsername, adminPassword);
         WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome to the Dev Center')]"));
         assertThat(assertionText.isDisplayed(), is(true));
         System.out.println("Contractor login successful.");

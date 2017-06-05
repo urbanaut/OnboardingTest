@@ -25,6 +25,8 @@ public class TestBase {
     public static String startingUrlDev = "http://10.117.3.200:8111";
     public static String startingUrlDevPub = "http://216.21.162.13:8111";
 
+    public static String firefoxDriverPath = geckoDriverPathJenkins;
+    public static String chromeDriverPath = chromeDriverPathJenkins;
     public static String startingUrl = startingUrlDev;
 
     public WebDriver getDriver() {
@@ -48,10 +50,11 @@ public class TestBase {
 
     private static WebDriver initChromeDriver(String appURL) {
         System.out.println("Launching google chrome with new profile..");
-        System.setProperty("webdriver.chrome.driver", chromeDriverPathJenkins);
+        System.out.println("Using driver path: " + chromeDriverPath);
+        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
-        options.addArguments("chrome.switches","--disable-extensions"); //Removes popup for disabling extensions
+        options.addArguments("chrome.switches","--disable-extensions"); //Removes popup reminder for disabling extensions
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
@@ -64,7 +67,8 @@ public class TestBase {
 
     private static WebDriver initFirefoxDriver(String appURL) {
         System.out.println("Launching Firefox browser..");
-        //System.setProperty("webdriver.gecko.driver", geckoDriverPathJenkins);
+        System.out.println("Using driver path: " + firefoxDriverPath);
+        System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
         WebDriver driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 //        driver.manage().window().maximize();
@@ -77,7 +81,6 @@ public class TestBase {
     public void initializeTestBaseSetup(String browserType, String appURL) {
         try {
             setDriver(browserType, appURL);
-
         } catch (Exception e) {
             System.out.println("Error....." + e.getStackTrace());
         }
