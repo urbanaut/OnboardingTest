@@ -6,7 +6,7 @@
     <test name="Run Tests">
         <classes>
             <class name="tests.LoginTests"/>
-            <!--<class name="tests.UserTasksTests"/>-->
+            <class name="tests.UserTasksTests"/>
         </classes>
     </test>
 </suite>
