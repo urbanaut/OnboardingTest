@@ -35,7 +35,7 @@ public class UserTasksTests extends TestBase {
     }
 
     @Test
-    public void verify_presence_of_column_sort_arrow() throws InterruptedException {
+    public void verifyPresenceOfColumnSortArrow() throws InterruptedException {
         UserTasksPage tasksPage = new UserTasksPage();
         for (String header : headers) {
             tasksPage.clickHeaderNamed(header);
@@ -50,7 +50,7 @@ public class UserTasksTests extends TestBase {
     }
 
     @Test
-    public void verify_alphabetical_column_sort() throws InterruptedException {
+    public void verifyAlphabeticalColumnSort() throws InterruptedException {
         int rowNum = 2;
         int columnNum = 1;
         ArrayList<String> firstLettersString = new ArrayList<>();
@@ -98,10 +98,5 @@ public class UserTasksTests extends TestBase {
             firstLettersString.clear();
             columnNum = columnNum + 1;
         }
-    }
-
-    @AfterClass
-    public void teardown() {
-
     }
 }

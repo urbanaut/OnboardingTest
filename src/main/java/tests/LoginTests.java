@@ -25,36 +25,33 @@ public class LoginTests extends TestBase {
     private WebDriver driver;
 
     @BeforeClass
-    public void setUp() {
+    public void classSetup() {
         driver = getDriver();
     }
 
-//    @BeforeMethod
-//    public void setup() {
-//        LoginPage login = new LoginPage(driver);
-//        login.logIn(adminUsername, adminPassword);
-//    }
-
-    @Test
-    public void log_in_as_admin() throws InterruptedException {
+    @BeforeMethod
+    public void setup() {
         LoginPage login = new LoginPage(driver);
         login.logIn(adminUsername, adminPassword);
+    }
+
+    @Test
+    public void logInAsAdmin() throws InterruptedException {
         WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome to the Dev Center')]"));
         assertThat(assertionText.isDisplayed(), is(true));
         System.out.println("Admin login successful.");
     }
 
     @Test
-    public void log_in_as_contractor() throws InterruptedException {
-        LoginPage login = new LoginPage(driver);
-        login.logIn(adminUsername, adminPassword);
+    public void logInAsContractor() throws InterruptedException {
         WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome to the Dev Center')]"));
         assertThat(assertionText.isDisplayed(), is(true));
         System.out.println("Contractor login successful.");
+        System.out.println();
     }
 
     @AfterMethod
-    public void logout_of_app() throws InterruptedException {
+    public void logoutOfApp() throws InterruptedException {
         LandingPage landing = new LandingPage();
         landing.clickLogoutButton();
     }

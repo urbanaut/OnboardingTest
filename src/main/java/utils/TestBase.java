@@ -84,7 +84,7 @@ public class TestBase {
         try {
             setDriver(browserType, appURL);
         } catch (Exception e) {
-            System.out.println("Error....." + e.getStackTrace());
+            System.out.println("Error..." + e.getStackTrace());
         }
     }
 
