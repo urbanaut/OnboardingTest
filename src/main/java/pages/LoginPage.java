@@ -25,7 +25,7 @@ public class LoginPage extends TestBase {
             enterUsername(username);
             enterPassword(password);
             clickLoginButton();
-            waitInSeconds(1);
+            //waitInSeconds(1);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

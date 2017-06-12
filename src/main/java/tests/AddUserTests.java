@@ -27,7 +27,6 @@ public class AddUserTests extends TestBase {
         AddUserPage addUserPage = new AddUserPage();
         addUserPage.clickAddUserButton();
         WebElement error = driver.findElement(By.xpath("//input[contains(@class,'empty error')]"));
-
         Assert.assertTrue(error.isDisplayed(),"No page error on null submit.");
     }
 

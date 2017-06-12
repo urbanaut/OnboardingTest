@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="FunctionalTests" verbose="1">
-    <parameter name="appURL" value="http://10.117.3.200:8111"/>
+    <parameter name="appURL" value="http://localhost:8081"/>
     <parameter name="browserType" value="chrome"/>
     <test name="Run Tests">
         <classes>

@@ -14,4 +14,6 @@ public class TaskTemplatesPage extends TestBase {
     public void selectCategory (String option) {
         
     }
+
+
 }
