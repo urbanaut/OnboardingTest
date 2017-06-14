@@ -11,6 +11,10 @@ public class UsersTests extends TestBase {
 
     // Sort user
 
-    //Deactivate user
+    // View user details
+
+    // Deactivate user
+
+
 
 }
