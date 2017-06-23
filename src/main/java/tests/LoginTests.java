@@ -37,14 +37,14 @@ public class LoginTests extends TestBase {
 
     @Test
     public void logInAsAdmin() throws InterruptedException {
-        WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome to the Dev Center')]"));
+        WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome')]"));
         assertThat(assertionText.isDisplayed(), is(true));
         System.out.println("Admin login successful.");
     }
 
     @Test
     public void logInAsContractor() throws InterruptedException {
-        WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome to the Dev Center')]"));
+        WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome')]"));
         assertThat(assertionText.isDisplayed(), is(true));
         System.out.println("Contractor login successful.");
         System.out.println();

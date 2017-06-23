@@ -26,8 +26,8 @@ public class TestBase {
     public static String startingUrlDev = "http://10.117.3.200:8111";
     public static String startingUrlDevPub = "http://216.21.162.13:8111";
 
-    public static String firefoxDriverPath = geckoDriverPathJenkins;
-    public static String chromeDriverPath = chromeDriverPathJenkins;
+    public static String firefoxDriverPath;
+    public static String chromeDriverPath;
     public static String startingUrl = startingUrlDev;
 
     public WebDriver getDriver() {
@@ -43,9 +43,26 @@ public class TestBase {
                 driver = initFirefoxDriver(appURL);
                 break;
             default:
-                System.out.println("browser : " + browserType
+                System.out.println("Browser : " + browserType
                         + " is invalid, Launching Firefox as browser of choice..");
                 driver = initFirefoxDriver(appURL);
+        }
+    }
+
+    private void setEnvironment(String environment) {
+        switch(environment) {
+            case "dev":
+                firefoxDriverPath = geckoDriverPathDev;
+                chromeDriverPath = chromeDriverPathDev;
+                break;
+            case "jenkins":
+                firefoxDriverPath = geckoDriverPathJenkins;
+                chromeDriverPath = chromeDriverPathJenkins;
+                break;
+            default:
+                System.out.println("Test run environment unspecified, defaulting to Dev environment.");
+                firefoxDriverPath = geckoDriverPathDev;
+                chromeDriverPath = chromeDriverPathDev;
         }
     }
 
@@ -78,10 +95,11 @@ public class TestBase {
         return driver;
     }
 
-    @Parameters({ "browserType", "appURL" })
+    @Parameters({ "browserType", "appURL", "environment" })
     @BeforeClass
-    public void initializeTestBaseSetup(String browserType, String appURL) {
+    public void initializeTestBaseSetup(String browserType, String appURL, String environment) {
         try {
+            setEnvironment(environment);
             setDriver(browserType, appURL);
         } catch (Exception e) {
             System.out.println("Error..." + e.getStackTrace());
