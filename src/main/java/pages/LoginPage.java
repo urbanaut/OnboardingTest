@@ -22,6 +22,7 @@ public class LoginPage extends TestBase {
 
     public void logIn(String username, String password) {
         try {
+            waitInSeconds(1);
             enterUsername(username);
             enterPassword(password);
             clickLoginButton();
