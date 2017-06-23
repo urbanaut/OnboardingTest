@@ -10,7 +10,7 @@ import utils.TestBase;
 public class LandingPage extends TestBase {
 
     private static By logoutButton = By.xpath("//a[contains(text(),'Logout')]");
-    private static WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome')]"));
+    //private static WebElement assertionText = driver.findElement(By.xpath("//h2[contains(text(),'Welcome')]"));
 
     public void clickLogoutButton() {
         WebElement logout = driver.findElement(logoutButton);

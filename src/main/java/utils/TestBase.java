@@ -54,10 +54,12 @@ public class TestBase {
             case "dev":
                 firefoxDriverPath = geckoDriverPathDev;
                 chromeDriverPath = chromeDriverPathDev;
+                System.out.println("Set for environment: " + environment);
                 break;
             case "jenkins":
                 firefoxDriverPath = geckoDriverPathJenkins;
                 chromeDriverPath = chromeDriverPathJenkins;
+                System.out.println("Set for environment: " + environment);
                 break;
             default:
                 System.out.println("Test run environment unspecified, defaulting to Dev environment.");

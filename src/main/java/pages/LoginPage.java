@@ -22,9 +22,9 @@ public class LoginPage extends TestBase {
 
     public void logIn(String username, String password) {
         try {
-            waitInSeconds(1);
             enterUsername(username);
             enterPassword(password);
+            waitInSeconds(1);
             clickLoginButton();
             waitInSeconds(1);
         } catch (Exception e) {
