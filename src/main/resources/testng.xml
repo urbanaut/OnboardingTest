@@ -4,11 +4,15 @@
     <!--<parameter name="appURL" value="http://localhost:8081"/>-->
     <parameter name="appURL" value="http://10.117.3.200:8111"/>
     <parameter name="browserType" value="chrome"/>
-    <parameter name="environment" value="dev" />
+    <parameter name="environment" value="jenkins" />
     <test name="Run Tests">
         <classes>
             <class name="tests.LoginTests"/>
             <!--<class name="tests.UserTasksTests"/>-->
         </classes>
     </test>
+    <!--<suite-files>-->
+        <!--<suite-file path="suite1.xml"/>-->
+        <!--<suite-file path="suite2.xml"/>-->
+    <!--</suite-files>-->
 </suite>

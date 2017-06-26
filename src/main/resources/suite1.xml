@@ -1,8 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="suite1" parallel="false" verbose="1">
-    <parameter name="appURL" value="http://localhost:8081"/>
-    <parameter name="browserType" value="chrome"/>
     <test name="suite1-test1">
         <classes>
             <class name="tests.LoginTests"/>

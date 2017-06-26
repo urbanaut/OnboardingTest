@@ -1,16 +1,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="main-suite" parallel="false" verbose="1">
-    <parameter name="appURL" value="http://localhost:8081"/>
-    <parameter name="browserType" value="chrome"/>
+    <!--<parameter name="appURL" value="http://localhost:8081"/>-->
+    <!--<parameter name="browserType" value="chrome"/>-->
     <suite-files>
         <suite-file path="suite1.xml" />
         <suite-file path="suite2.xml" />
     </suite-files>
-    <test name="main-suite-test1">
-        <classes>
-            <class name="tests.LoginTests"/>
-            <class name="tests.UserTasksTests"/>
-        </classes>
-    </test>
+    <!--<test name="main-suite-test1">-->
+        <!--<classes>-->
+            <!--<class name="tests.LoginTests"/>-->
+            <!--<class name="tests.UserTasksTests"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 </suite>

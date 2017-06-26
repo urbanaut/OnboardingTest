@@ -68,6 +68,10 @@ public class TestBase {
         }
     }
 
+    private void setStartingUrl(String url) {
+
+    }
+
     private static WebDriver initChromeDriver(String appURL) {
         System.out.println("Launching google chrome with new profile..");
         System.out.println("Using driver path: " + chromeDriverPath);

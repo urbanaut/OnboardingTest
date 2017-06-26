@@ -33,12 +33,6 @@
     </build>
 
     <dependencies>
-
-        <!--<dependency>-->
-            <!--<groupId>org.seleniumhq.selenium.core</groupId>-->
-            <!--<artifactId>selenium-core</artifactId>-->
-            <!--<version>1.0.1</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -49,11 +43,6 @@
             <artifactId>selenium-server</artifactId>
             <version>3.4.0</version>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>org.seleniumhq.selenium</groupId>-->
-            <!--<artifactId>selenium-remote-driver</artifactId>-->
-            <!--<version>3.4.0</version>-->
-        <!--</dependency>-->
 
 
         <dependency>
