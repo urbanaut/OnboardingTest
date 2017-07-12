@@ -18,17 +18,8 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
 
     protected static WebDriver driver;
-    public static String chromeDriverPathJenkins = "/usr/local/share/chromedriver";
-    public static String chromeDriverPathDev = "src\\main\\resources\\drivers\\chromedriver.exe";
-    public static String geckoDriverPathJenkins = "/usr/bin/geckodriver";
-    public static String geckoDriverPathDev = "src\\main\\resources\\drivers\\geckodriver.exe";
-    public static String startingUrlProd = "http://onboarding.stgconsulting.com/new-user#/";
-    public static String startingUrlDev = "http://10.117.3.200:8111";
-    public static String startingUrlDevPub = "http://216.21.162.13:8111";
-
-    public static String firefoxDriverPath;
-    public static String chromeDriverPath;
-    public static String startingUrl = startingUrlDev;
+    private static String firefoxDriverPath;
+    private static String chromeDriverPath;
 
     public WebDriver getDriver() {
         return driver;
@@ -52,24 +43,40 @@ public class TestBase {
     private void setEnvironment(String environment) {
         switch(environment) {
             case "dev":
-                firefoxDriverPath = geckoDriverPathDev;
-                chromeDriverPath = chromeDriverPathDev;
+                firefoxDriverPath = "src\\main\\resources\\drivers\\geckodriver.exe";
+                chromeDriverPath = "src\\main\\resources\\drivers\\chromedriver.exe";
                 System.out.println("Set for environment: " + environment);
                 break;
             case "jenkins":
-                firefoxDriverPath = geckoDriverPathJenkins;
-                chromeDriverPath = chromeDriverPathJenkins;
+                firefoxDriverPath = "/usr/bin/geckodriver";
+                chromeDriverPath = "/usr/local/share/chromedriver";
                 System.out.println("Set for environment: " + environment);
                 break;
             default:
+                firefoxDriverPath = "src\\main\\resources\\drivers\\geckodriver.exe";
+                chromeDriverPath = "src\\main\\resources\\drivers\\chromedriver.exe";
                 System.out.println("Test run environment unspecified, defaulting to Dev environment.");
-                firefoxDriverPath = geckoDriverPathDev;
-                chromeDriverPath = chromeDriverPathDev;
         }
     }
 
-    private void setStartingUrl(String url) {
-
+    private String setStartingUrl(String url) {
+        switch (url) {
+            case "dev":
+                System.out.println("Starting URL set to: " + url);
+                return "http://10.117.3.200:8111";
+            case "local":
+                System.out.println("Starting URL set to: " + url);
+                return "http://localhost:8081";
+            case "public":
+                System.out.println("Starting URL set to: " + url);
+                return "http://216.21.162.13:8111";
+            case "prod":
+                System.out.println("Starting URL set to: " + url);
+                return "http://onboarding.stgconsulting.com/new-user#/";
+            default:
+                System.out.println("Starting URL not specified, defaulting to development URL.");
+                return "http://10.117.3.200:8111";
+        }
     }
 
     private static WebDriver initChromeDriver(String appURL) {
@@ -106,13 +113,13 @@ public class TestBase {
     public void initializeTestBaseSetup(String browserType, String appURL, String environment) {
         try {
             setEnvironment(environment);
-            setDriver(browserType, appURL);
+            setDriver(browserType, setStartingUrl(appURL));
         } catch (Exception e) {
             System.out.println("Error..." + e.getStackTrace());
         }
     }
 
-    @AfterClass
+    //@AfterClass
     public void tearDown() {
         driver.close();
     }

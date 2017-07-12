@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="suite3" parallel="false" verbose="1">
+    <test name="suite3-test1">
+        <classes>
+            <class name="utils.TempTester"/>
+        </classes>
+    </test>
+</suite>

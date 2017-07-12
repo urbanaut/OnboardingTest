@@ -2,17 +2,18 @@
 
 <suite name="FunctionalTests" verbose="1">
     <!--<parameter name="appURL" value="http://localhost:8081"/>-->
-    <parameter name="appURL" value="http://10.117.3.200:8111"/>
+    <parameter name="appURL" value="dev"/>
     <parameter name="browserType" value="chrome"/>
-    <parameter name="environment" value="jenkins" />
-    <test name="Run Tests">
-        <classes>
-            <class name="tests.LoginTests"/>
-            <!--<class name="tests.UserTasksTests"/>-->
-        </classes>
-    </test>
-    <!--<suite-files>-->
-        <!--<suite-file path="suite1.xml"/>-->
+    <parameter name="environment" value="dev" />
+    <!--<test name="Run Tests">-->
+        <!--<classes>-->
+            <!--<class name="tests.LoginTests"/>-->
+            <!--&lt;!&ndash;<class name="tests.UserTasksTests"/>&ndash;&gt;-->
+        <!--</classes>-->
+    <!--</test>-->
+    <suite-files>
+        <suite-file path="suite1.xml"/>
         <!--<suite-file path="suite2.xml"/>-->
-    <!--</suite-files>-->
+        <!--<suite-file path="suite3.xml"/>-->
+    </suite-files>
 </suite>
